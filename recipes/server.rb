@@ -9,7 +9,13 @@ package 'httpd' do
 end
 
 file '/var/www/html/index.html' do
-  content '<h1>Hello, World!</h1><br><h2>This is and auto generated page from the Chef Receipe server.rb</h2>'
+  content "<h1>Hello, World!</h1><br><h2>This is and auto generated page from the Chef Receipe server.rb</h2>
+	<ul>
+	<li>HOSTNAME : #{node['hostname']}</li>
+	<li>IPADDRESS: #{node['ipaddress']}</li>
+	</ul>
+
+"
 end
 
 service 'httpd' do
