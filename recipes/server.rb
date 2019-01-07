@@ -8,14 +8,9 @@ package 'httpd' do
   action :install
 end
 
-file '/var/www/html/index.html' do
-  content "<h1>Hello, World!</h1><br><h2>This is and auto generated page from the Chef Receipe server.rb</h2>
-	<ul>
-	<li>HOSTNAME : #{node['hostname']}</li>
-	<li>IPADDRESS: #{node['ipaddress']}</li>
-	</ul>
-
-"
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
+  action :create
 end
 
 service 'httpd' do
